@@ -245,7 +245,7 @@ router.get('/', async (req, res) => {
                 attributes: ['stars'],
             },
         ],
-        group: ['Spot.id'],
+        group: ['Spot.id', 'SpotImages.id', 'Reviews.id'],
     });
     const spotsResponse = spots.map(spot => {
         return {
