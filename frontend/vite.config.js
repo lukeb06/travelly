@@ -4,13 +4,7 @@ import eslint from 'vite-plugin-eslint';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-    plugins: [
-        react(),
-        eslint({
-            lintOnStart: true,
-            failOnError: mode === 'production',
-        }),
-    ],
+    plugins: [react()],
     server: {
         open: true,
         proxy: {

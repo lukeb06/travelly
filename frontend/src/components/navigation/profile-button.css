@@ -1,0 +1,31 @@
+.hidden {
+    display: none;
+}
+
+#profileButton {
+    position: relative;
+}
+
+#profileButton,
+#profileButton > button {
+    display: grid;
+    place-items: center;
+}
+
+#profileButton > button {
+    cursor: pointer;
+}
+
+#profileButton > ul {
+    background-color: var(--card);
+    color: var(--card-foreground);
+    padding: calc(var(--unit) * 4);
+    position: absolute;
+    top: 2rem;
+    right: 0;
+}
+
+#profileButton .modal-button {
+    white-space: nowrap;
+    padding: var(--unit);
+}

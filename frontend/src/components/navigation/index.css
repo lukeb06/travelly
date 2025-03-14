@@ -1,0 +1,13 @@
+#navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: calc(var(--unit) * 4);
+    background-color: var(--popover);
+}
+
+#navigation > .nav-items {
+    display: flex;
+    flex-direction: row;
+    gap: calc(var(--unit) * 6);
+}

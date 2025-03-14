@@ -1,0 +1,23 @@
+#modal {
+    position: absolute;
+    inset: 0;
+}
+
+#modal-background {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(var(--unit));
+}
+
+#modal-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: var(--background);
+    padding: calc(var(--unit) * 4);
+    border-radius: var(--radius);
+    border: solid 2px var(--border);
+}
