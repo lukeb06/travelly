@@ -221,7 +221,6 @@ router.get('/', async (req, res) => {
                 [sequelize.fn('MAX', sequelize.col('SpotImages.id')), 'SpotImages.id'],
                 [sequelize.fn('AVG', sequelize.col('stars')), 'avgRating'],
             ],
-            exclude: ['SpotImages.id', 'Reviews.id'],
         },
         include: [
             {
