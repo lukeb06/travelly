@@ -218,21 +218,20 @@ router.get('/', async (req, res) => {
         attributes: {
             include: [
                 [sequelize.fn('MAX', sequelize.col('url')), 'previewImage'],
-                [sequelize.fn('MAX', sequelize.col('SpotImages.id')), 'SpotImages.id'],
                 [sequelize.fn('AVG', sequelize.col('stars')), 'avgRating'],
             ],
         },
         include: [
             {
                 model: SpotImage,
-                attributes: ['url'],
+                attributes: [],
                 where: {
                     preview: true,
                 },
             },
             {
                 model: Review,
-                attributes: ['stars'],
+                attributes: [],
             },
         ],
         group: ['Spot.id'],
