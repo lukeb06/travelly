@@ -18,44 +18,44 @@ module.exports = {
                 },
                 {
                     spotId: 1,
-                    url: 'https://picsum.photos/300/200',
+                    url: 'https://picsum.photos/301/200',
                     preview: false,
                 },
                 {
                     spotId: 1,
-                    url: 'https://picsum.photos/300/200',
+                    url: 'https://picsum.photos/300/201',
                     preview: false,
                 },
 
                 {
                     spotId: 2,
-                    url: 'https://picsum.photos/300/200',
+                    url: 'https://picsum.photos/301/201',
                     preview: true,
                 },
                 {
                     spotId: 2,
-                    url: 'https://picsum.photos/300/200',
+                    url: 'https://picsum.photos/302/200',
                     preview: false,
                 },
                 {
                     spotId: 2,
-                    url: 'https://picsum.photos/300/200',
+                    url: 'https://picsum.photos/302/201',
                     preview: false,
                 },
 
                 {
                     spotId: 3,
-                    url: 'https://picsum.photos/300/200',
+                    url: 'https://picsum.photos/302/202',
                     preview: true,
                 },
                 {
                     spotId: 3,
-                    url: 'https://picsum.photos/300/200',
+                    url: 'https://picsum.photos/303/200',
                     preview: false,
                 },
                 {
                     spotId: 3,
-                    url: 'https://picsum.photos/300/200',
+                    url: 'https://picsum.photos/303/201',
                     preview: false,
                 },
             ],

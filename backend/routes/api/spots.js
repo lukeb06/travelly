@@ -211,6 +211,8 @@ router.post('/', validateCreateSpot, async (req, res) => {
     });
 });
 
+// Get all Spots
+
 router.get('/', async (req, res) => {
     const spots = await Spot.findAll({
         attributes: [
@@ -233,16 +235,15 @@ router.get('/', async (req, res) => {
         include: [
             {
                 model: SpotImage,
-                attributes: ['url'],
                 where: {
                     preview: true,
                 },
             },
             {
                 model: Review,
-                attributes: ['stars'],
             },
         ],
+        group: ['Spot.id'],
     });
     const spotsResponse = spots.map(spot => {
         return {
