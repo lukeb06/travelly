@@ -49,11 +49,11 @@ export default function SpotCard({ spot }) {
                     <div className="sc-rating">
                         {/* TODO: Add star Icon */}
                         <CiStar />
-                        <span className="sc-rating-value">{spot.avgRating.toFixed(1)}</span>
+                        <span className="sc-rating-value">{+spot.avgRating.toFixed(1)}</span>
                     </div>
                 </div>
                 <div className="sc-bottom">
-                    <span>${spot.price.toFixed(2)} / night</span>
+                    <span>${+spot.price.toFixed(2)} / night</span>
                 </div>
             </div>
             <div className="sc-tooltip">
