@@ -215,23 +215,13 @@ router.post('/', validateCreateSpot, async (req, res) => {
 
 router.get('/', async (req, res) => {
     const spots = await Spot.findAll({
-        attributes: [
-            'id',
-            'ownerId',
-            'address',
-            'city',
-            'state',
-            'country',
-            'lat',
-            'lng',
-            'name',
-            'description',
-            'price',
-            'createdAt',
-            'updatedAt',
-            [sequelize.fn('MAX', sequelize.col('url')), 'previewImage'],
-            [sequelize.fn('AVG', sequelize.col('stars')), 'avgRating'],
-        ],
+        attributes: {
+            include: [
+                [sequelize.fn('MAX', sequelize.col('url')), 'previewImage'],
+                [sequelize.fn('AVG', sequelize.col('stars')), 'avgRating'],
+            ],
+            exclude: ['SpotImages.id', 'Reviews.id'],
+        },
         include: [
             {
                 model: SpotImage,
@@ -245,7 +235,7 @@ router.get('/', async (req, res) => {
                 attributes: ['stars'],
             },
         ],
-        group: ['Spot.id', 'SpotImages.id', 'Reviews.id'],
+        group: ['Spot.id'],
     });
     const spotsResponse = spots.map(spot => {
         return {
