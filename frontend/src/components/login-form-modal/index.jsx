@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+import * as sessionActions from '../../store/session';
 import './index.css';
 
 export default function LoginFormModal() {
@@ -19,7 +20,7 @@ export default function LoginFormModal() {
         if (!emailUsername) return setErrors(['Email or Username must not be blank']);
         if (!password) return setErrors(['Password must not be blank']);
 
-        return dispatch(window.sessionActions.login({ credential: emailUsername, password })).catch(
+        return dispatch(sessionActions.login({ credential: emailUsername, password })).catch(
             async res => {
                 const { message } = await res.json();
                 setErrors([message]);

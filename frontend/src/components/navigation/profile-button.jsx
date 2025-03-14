@@ -4,6 +4,7 @@ import { FaUserCircle } from 'react-icons/fa';
 import OpenModalButton from '../open-modal-button';
 import LoginFormModal from '../login-form-modal';
 import SignupFormModal from '../signup-form-modal';
+import * as sessionActions from '../../store/session';
 import './profile-button.css';
 
 function ProfileButton({ user }) {
@@ -34,7 +35,7 @@ function ProfileButton({ user }) {
 
     const logout = e => {
         e.preventDefault();
-        dispatch(window.sessionActions.logout());
+        dispatch(sessionActions.logout());
         closeMenu();
     };
 
