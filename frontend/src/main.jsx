@@ -9,6 +9,7 @@ import * as sessionActions from './store/session';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './layout';
 import { Modal, ModalProvider } from './context/modal';
+import HomePage from './pages/home';
 
 const store = configureStore();
 
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <h1>Welcome</h1>,
+                element: <HomePage />,
             },
             {
                 path: '*',

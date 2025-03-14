@@ -40,7 +40,7 @@ function ProfileButton({ user }) {
     };
 
     return (
-        <div id="profileButton">
+        <li id="profileButton">
             <button onClick={toggleMenu}>
                 <FaUserCircle />
             </button>
@@ -73,7 +73,7 @@ function ProfileButton({ user }) {
                     </>
                 )}
             </ul>
-        </div>
+        </li>
     );
 }
 

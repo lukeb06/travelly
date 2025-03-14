@@ -161,4 +161,5 @@ main {
     height: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    padding: calc(var(--unit) * 4);
 }

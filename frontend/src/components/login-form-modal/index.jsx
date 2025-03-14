@@ -32,7 +32,7 @@ export default function LoginFormModal() {
 
     return (
         <div id="page">
-            <h1>Travelly Login</h1>
+            <h1>Login</h1>
             <form onSubmit={handleSubmit}>
                 <div className="section">
                     <label htmlFor="emailUsername">Email or Username</label>

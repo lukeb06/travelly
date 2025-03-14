@@ -41,7 +41,7 @@ export default function SignupFormModal() {
 
     return (
         <div id="page">
-            <h1>Travelly Signup</h1>
+            <h1>Signup</h1>
             <form onSubmit={handleSubmit}>
                 <div className="section">
                     <label htmlFor="email">Email</label>

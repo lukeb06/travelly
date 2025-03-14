@@ -1,0 +1,98 @@
+.spot-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    border-radius: var(--radius);
+    margin: 0 auto;
+    overflow: hidden;
+    cursor: pointer;
+
+    position: relative;
+    box-shadow: 0 0 calc(var(--unit) * 2) var(--border);
+
+    transition: transform 1s ease-out;
+}
+
+.spot-card .sc-tooltip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(var(--unit));
+    padding: var(--unit) calc(var(--unit) * 2);
+    padding-top: 0;
+    border-radius: var(--radius);
+    opacity: 0;
+    transition:
+        opacity 0.3s ease-out 0s,
+        top 0.3s ease-in-out 0.1s,
+        left 0.3s ease-in-out 0.1s;
+    pointer-events: none;
+}
+
+.spot-card .sc-tooltip span {
+    color: white;
+    white-space: nowrap;
+    font-size: calc(var(--unit) * 3);
+}
+
+.spot-card:hover .sc-tooltip {
+    opacity: 1;
+    user-select: none;
+    transition:
+        opacity 0.3s ease-out 0.6s,
+        top 0.3s ease-in-out 0.2s,
+        left 0.3s ease-in-out 0.2s;
+}
+
+.spot-card .sc-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.spot-card .sc-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    transition: transform 0.5s ease-out;
+}
+
+.spot-card:hover .sc-image img {
+    transform: scale(1.1);
+
+    transition: transform 0.75s ease-out;
+}
+
+.spot-card .sc-details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--unit) * 3) calc(var(--unit) * 2);
+    gap: calc(var(--unit) * 2);
+}
+
+.spot-card .sc-details .sc-top {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.spot-card .sc-details .sc-bottom {
+    width: 100%;
+}
+
+.spot-card .sc-details .sc-top .sc-rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: calc(var(--unit) * 1);
+}
