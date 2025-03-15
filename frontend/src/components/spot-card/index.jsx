@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import './index.css';
 import { CiStar } from 'react-icons/ci';
 
@@ -36,7 +37,7 @@ export default function SpotCard({ spot }) {
     };
 
     return (
-        <div onMouseMove={handleMouseMove} className="spot-card">
+        <NavLink to={`/spots/${spot.id}`} onMouseMove={handleMouseMove} className="spot-card">
             <div className="sc-image">
                 <img src={spot.previewImage} />
             </div>
@@ -61,6 +62,6 @@ export default function SpotCard({ spot }) {
             <div className="sc-tooltip">
                 <span>{spot.name}</span>
             </div>
-        </div>
+        </NavLink>
     );
 }

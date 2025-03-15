@@ -10,6 +10,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './layout';
 import { Modal, ModalProvider } from './context/modal';
 import HomePage from './pages/home';
+import SpotDetailsPage from './pages/spot-details';
 
 const store = configureStore();
 
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <HomePage />,
+            },
+            {
+                path: '/spots/:id',
+                element: <SpotDetailsPage />,
             },
             {
                 path: '*',

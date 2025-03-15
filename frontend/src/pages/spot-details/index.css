@@ -1,0 +1,159 @@
+#spotDetailsPage {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    .spot-details {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--unit) * 4);
+
+        .sd-main {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: calc(var(--unit) * 6);
+
+            .sd-details {
+                display: flex;
+                flex-direction: column;
+                gap: calc(var(--unit) * 2);
+            }
+
+            .sd-price {
+                display: flex;
+                flex-direction: column;
+                gap: calc(var(--unit) * 4);
+                align-items: center;
+                justify-content: center;
+                padding: calc(var(--unit) * 6);
+                box-shadow: 0 0 calc(var(--unit) * 3) var(--border);
+                border-radius: var(--radius);
+            }
+
+            .sd-price > div {
+                display: flex;
+                flex-direction: row;
+                gap: calc(var(--unit) * 8);
+
+                .sd-price-value {
+                    font-size: calc(var(--unit) * 3);
+
+                    .sd-price-currency {
+                        font-size: calc(var(--unit) * 5);
+                        margin-right: 2px;
+                    }
+                }
+            }
+
+            .sd-price > button {
+                width: 100%;
+                background-color: var(--primary);
+                color: var(--primary-foreground);
+                padding: calc(var(--unit) * 3);
+                border-radius: var(--radius);
+
+                transition: background-color 0.3s ease-out;
+            }
+
+            .sd-price > button:hover {
+                background-color: var(--primary-dark);
+            }
+        }
+
+        .sd-gallery {
+            padding: calc(var(--unit) * 2) calc((100% - 400px) / 2);
+            gap: calc(var(--unit) * 4);
+            display: flex;
+            flex-direction: row;
+
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+
+            scrollbar-width: none;
+
+            position: relative;
+
+            .sd-gallery-image {
+                width: 600px;
+                height: 400px;
+                scroll-snap-align: center;
+
+                img {
+                    width: 600px;
+                    height: 400px;
+                    object-fit: cover;
+                    object-position: center;
+                    border-radius: var(--radius);
+                    box-shadow: 0 0 calc(var(--unit) * 2) rgba(0, 0, 0, 0.3);
+                    background-color: rgba(0, 0, 0, 0.2);
+                }
+            }
+
+            /* .sd-gallery-preview { */
+            /*     flex-grow: 1; */
+            /**/
+            /*     img { */
+            /*         width: 100%; */
+            /*         height: auto; */
+            /*     } */
+            /* } */
+            /**/
+            /* .sd-gallery-others { */
+            /*     flex-shrink: 1; */
+            /*     display: grid; */
+            /*     grid-template-columns: auto auto; */
+            /*     gap: calc(var(--unit) * 2); */
+            /* } */
+        }
+
+        .sd-rating,
+        .sd-rating * {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .sd-rating-value {
+            margin-right: calc(var(--unit) * 2);
+
+            svg {
+                margin-right: calc(var(--unit) / 2);
+            }
+        }
+
+        .sd-review-count {
+            margin-left: calc(var(--unit) * 2);
+        }
+
+        .sd-footer {
+            border-top: 2px solid var(--border);
+            padding-top: calc(var(--unit) * 6);
+            margin-top: calc(var(--unit) * 4);
+
+            .sd-rating * {
+                font-size: calc(var(--unit) * 5);
+            }
+
+            .sd-reviews {
+                display: flex;
+                flex-direction: column;
+                padding: calc(var(--unit) * 4) 0;
+                gap: calc(var(--unit) * 12);
+
+                .sd-review {
+                    display: flex;
+                    flex-direction: column;
+                    gap: calc(var(--unit) * 2);
+
+                    h4 {
+                        color: var(--muted-foreground);
+                    }
+                }
+            }
+        }
+    }
+}

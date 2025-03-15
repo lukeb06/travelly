@@ -7,6 +7,8 @@ if (process.env.NODE_ENV === 'production') {
     options.schema = process.env.SCHEMA; // define your schema in options object
 }
 
+const LOREM = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`;
+
 module.exports = {
     async up(queryInterface, Sequelize) {
         await Spot.bulkCreate(
@@ -20,7 +22,7 @@ module.exports = {
                     lat: 40.7128,
                     lng: -74.006,
                     name: 'Spot 1',
-                    description: 'This is a great spot!',
+                    description: LOREM,
                     price: 100,
                 },
                 {
@@ -32,7 +34,7 @@ module.exports = {
                     lat: 34.0522,
                     lng: -118.2437,
                     name: 'Spot 2',
-                    description: 'This is also a great spot!',
+                    description: LOREM,
                     price: 130,
                 },
                 {
@@ -44,8 +46,56 @@ module.exports = {
                     lat: 10.7128,
                     lng: -60.006,
                     name: 'Spot 3',
-                    description: 'This MIGHT be the best spot!',
+                    description: LOREM,
                     price: 200,
+                },
+                {
+                    ownerId: 4,
+                    address: '1841 East Blvd',
+                    city: 'Houston',
+                    state: 'Texas',
+                    country: 'United States',
+                    lat: 29.7128,
+                    lng: -95.006,
+                    name: 'Spot 4',
+                    description: LOREM,
+                    price: 150,
+                },
+                {
+                    ownerId: 5,
+                    address: '9173 Lake Rd',
+                    city: 'Denver',
+                    state: 'Colorado',
+                    country: 'United States',
+                    lat: 10.7128,
+                    lng: -60.006,
+                    name: 'Spot 5',
+                    description: LOREM,
+                    price: 320,
+                },
+                {
+                    ownerId: 6,
+                    address: '1198 Lincoln Ave',
+                    city: 'Phoenix',
+                    state: 'Arizona',
+                    country: 'United States',
+                    lat: 10.7128,
+                    lng: -60.006,
+                    name: 'Spot 6',
+                    description: LOREM,
+                    price: 250,
+                },
+                {
+                    ownerId: 7,
+                    address: '123 Main St',
+                    city: 'San Francisco',
+                    state: 'California',
+                    country: 'United States',
+                    lat: 10.7128,
+                    lng: -60.006,
+                    name: 'Spot 7',
+                    description: LOREM,
+                    price: 300,
                 },
             ],
             { validate: true },
@@ -58,7 +108,9 @@ module.exports = {
         return queryInterface.bulkDelete(
             options,
             {
-                name: { [Op.in]: ['Spot 1', 'Spot 2', 'Spot 3'] },
+                name: {
+                    [Op.in]: ['Spot 1', 'Spot 2', 'Spot 3', 'Spot 4', 'Spot 5', 'Spot 6', 'Spot 7'],
+                },
             },
             {},
         );
