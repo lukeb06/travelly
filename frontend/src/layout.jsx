@@ -17,7 +17,9 @@ export default function Layout() {
     return (
         <>
             <Navigation isLoaded={isLoaded} />
-            <main>{isLoaded && <Outlet />}</main>
+            <main>
+                <div className="container">{isLoaded && <Outlet />}</div>
+            </main>
         </>
     );
 }

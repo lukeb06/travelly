@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as spotActions from '../../store/spots';
+import * as reviewActions from '../../store/reviews';
 import './index.css';
 import { useParams } from 'react-router-dom';
 import { CiStar } from 'react-icons/ci';
@@ -14,10 +15,6 @@ export default function SpotDetailsPage() {
     useEffect(() => {
         dispatch(spotActions.getSpotById(id));
     }, [dispatch, id]);
-
-    useEffect(() => {
-        console.log(spot);
-    }, [spot]);
 
     return (
         <div id="spotDetailsPage">
@@ -46,30 +43,70 @@ export default function SpotDetailsPage() {
                                     <span className="sd-price-currency">${spot.price}</span>night
                                 </span>
 
-                                <span className="sd-rating">
-                                    <span className="sd-rating-value">
-                                        <CiStar />
-                                        {parseFloat(spot.avgStarRating).toFixed(1)}
-                                    </span>
-                                    <span> - </span>
-                                    <span className="sd-review-count">
-                                        {spot.numReviews} reviews
-                                    </span>
-                                </span>
+                                <RatingText spot={spot} />
                             </div>
 
-                            <button>Reserve</button>
+                            <button onClick={() => alert('Feature coming soon!')}>Reserve</button>
                         </div>
                     </div>
 
                     <div className="sd-footer">
-                        <div className="sd-reviews"></div>
+                        <RatingText spot={spot} />
+                        <Reviews spotId={id} />
                     </div>
                 </div>
             ) : (
                 <></>
             )}
         </div>
+    );
+}
+
+// TODO: Post Your Review button
+
+function Reviews({ spotId }) {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(reviewActions.getReviewsBySpotId(spotId));
+    }, [dispatch, spotId]);
+
+    const reviews = useSelector(state => state.reviews.reviews);
+
+    return (
+        <div className="sd-reviews">
+            {reviews.map(review => {
+                return <Review key={review.id} review={review} />;
+            })}
+        </div>
+    );
+}
+
+function Review({ review }) {
+    const date = new Date(review.createdAt);
+    const month = date.toLocaleString('default', { month: 'long' });
+    const year = date.getFullYear();
+    const formattedDate = `${month} ${year}`;
+
+    return (
+        <div className="sd-review">
+            <h3>{review.User.firstName}</h3>
+            <h4>{formattedDate}</h4>
+            <p>{review.review}</p>
+        </div>
+    );
+}
+
+function RatingText({ spot }) {
+    return (
+        <span className="sd-rating">
+            <span className="sd-rating-value">
+                <CiStar />
+                {parseFloat(spot.avgStarRating).toFixed(1)}
+            </span>
+            <span> - </span>
+            <span className="sd-review-count">{spot.numReviews} reviews</span>
+        </span>
     );
 }
 

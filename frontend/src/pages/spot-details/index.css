@@ -31,26 +31,6 @@
                 padding: calc(var(--unit) * 6);
                 box-shadow: 0 0 calc(var(--unit) * 3) var(--border);
                 border-radius: var(--radius);
-
-                .sd-rating,
-                .sd-rating * {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    white-space: nowrap;
-                }
-
-                .sd-rating-value {
-                    margin-right: calc(var(--unit) * 2);
-
-                    svg {
-                        margin-right: calc(var(--unit) / 2);
-                    }
-                }
-
-                .sd-review-count {
-                    margin-left: calc(var(--unit) * 2);
-                }
             }
 
             .sd-price > div {
@@ -129,10 +109,51 @@
             /* } */
         }
 
+        .sd-rating,
+        .sd-rating * {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .sd-rating-value {
+            margin-right: calc(var(--unit) * 2);
+
+            svg {
+                margin-right: calc(var(--unit) / 2);
+            }
+        }
+
+        .sd-review-count {
+            margin-left: calc(var(--unit) * 2);
+        }
+
         .sd-footer {
             border-top: 2px solid var(--border);
-            padding-top: calc(var(--unit) * 4);
+            padding-top: calc(var(--unit) * 6);
             margin-top: calc(var(--unit) * 4);
+
+            .sd-rating * {
+                font-size: calc(var(--unit) * 5);
+            }
+
+            .sd-reviews {
+                display: flex;
+                flex-direction: column;
+                padding: calc(var(--unit) * 4) 0;
+                gap: calc(var(--unit) * 12);
+
+                .sd-review {
+                    display: flex;
+                    flex-direction: column;
+                    gap: calc(var(--unit) * 2);
+
+                    h4 {
+                        color: var(--muted-foreground);
+                    }
+                }
+            }
         }
     }
 }
