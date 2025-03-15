@@ -7,7 +7,7 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: calc(var(--unit) * 4);
+        gap: calc(var(--unit) * 8);
 
         .sd-main {
             width: 100%;
@@ -131,8 +131,8 @@
 
         .sd-footer {
             border-top: 2px solid var(--border);
-            padding-top: calc(var(--unit) * 6);
-            margin-top: calc(var(--unit) * 4);
+            padding-top: calc(var(--unit) * 7);
+            /* margin-top: calc(var(--unit) * 4); */
 
             .sd-rating * {
                 font-size: calc(var(--unit) * 5);
