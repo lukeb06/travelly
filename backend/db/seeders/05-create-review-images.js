@@ -39,6 +39,62 @@ module.exports = {
                     reviewId: 7,
                     url: 'https://picsum.photos/300/200',
                 },
+                {
+                    reviewId: 8,
+                    url: 'https://picsum.photos/300/200',
+                },
+                {
+                    reviewId: 9,
+                    url: 'https://picsum.photos/300/200',
+                },
+                {
+                    reviewId: 10,
+                    url: 'https://picsum.photos/300/200',
+                },
+                {
+                    reviewId: 11,
+                    url: 'https://picsum.photos/300/200',
+                },
+                {
+                    reviewId: 12,
+                    url: 'https://picsum.photos/300/200',
+                },
+                {
+                    reviewId: 13,
+                    url: 'https://picsum.photos/300/200',
+                },
+                {
+                    reviewId: 14,
+                    url: 'https://picsum.photos/300/200',
+                },
+                {
+                    reviewId: 15,
+                    url: 'https://picsum.photos/300/200',
+                },
+                {
+                    reviewId: 16,
+                    url: 'https://picsum.photos/300/200',
+                },
+                {
+                    reviewId: 17,
+                    url: 'https://picsum.photos/300/200',
+                },
+                {
+                    reviewId: 18,
+                    url: 'https://picsum.photos/300/200',
+                },
+                {
+                    reviewId: 19,
+                    url: 'https://picsum.photos/300/200',
+                },
+                {
+                    reviewId: 20,
+                    url: 'https://picsum.photos/300/200',
+                },
+                {
+                    reviewId: 21,
+                    url: 'https://picsum.photos/300/200',
+                },
             ],
             { validate: true },
         );
@@ -50,7 +106,11 @@ module.exports = {
         return queryInterface.bulkDelete(
             options,
             {
-                reviewId: { [Op.in]: [1, 2, 3, 4, 5, 6, 7] },
+                reviewId: {
+                    [Op.in]: [
+                        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+                    ],
+                },
             },
             {},
         );

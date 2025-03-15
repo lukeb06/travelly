@@ -42,7 +42,7 @@ function HomeLink() {
                     alignItems: 'center',
                 }}
             >
-                <img width="auto" height="100%" src="logo.png" />
+                <img width="auto" height="100%" src={window.location.origin + '/logo.png'} />
                 <span
                     style={{
                         color: 'var(--primary)',

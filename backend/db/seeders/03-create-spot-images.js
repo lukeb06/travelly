@@ -13,50 +13,178 @@ module.exports = {
             [
                 {
                     spotId: 1,
-                    url: 'https://picsum.photos/300/200',
-                    preview: true,
-                },
-                {
-                    spotId: 1,
-                    url: 'https://picsum.photos/301/200',
+                    url: 'https://picsum.photos/600/400',
                     preview: false,
                 },
                 {
                     spotId: 1,
-                    url: 'https://picsum.photos/300/201',
+                    url: 'https://picsum.photos/601/400',
                     preview: false,
                 },
-
                 {
-                    spotId: 2,
-                    url: 'https://picsum.photos/301/201',
+                    spotId: 1,
+                    url: 'https://picsum.photos/600/401',
+                    preview: false,
+                },
+                {
+                    spotId: 1,
+                    url: 'https://picsum.photos/601/401',
+                    preview: false,
+                },
+                {
+                    spotId: 1,
+                    url: 'https://picsum.photos/602/400',
                     preview: true,
                 },
                 {
                     spotId: 2,
-                    url: 'https://picsum.photos/302/200',
+                    url: 'https://picsum.photos/600/402',
                     preview: false,
                 },
                 {
                     spotId: 2,
-                    url: 'https://picsum.photos/302/201',
+                    url: 'https://picsum.photos/602/402',
                     preview: false,
                 },
-
                 {
-                    spotId: 3,
-                    url: 'https://picsum.photos/302/202',
+                    spotId: 2,
+                    url: 'https://picsum.photos/603/400',
+                    preview: false,
+                },
+                {
+                    spotId: 2,
+                    url: 'https://picsum.photos/600/403',
+                    preview: false,
+                },
+                {
+                    spotId: 2,
+                    url: 'https://picsum.photos/603/403',
                     preview: true,
                 },
                 {
                     spotId: 3,
-                    url: 'https://picsum.photos/303/200',
+                    url: 'https://picsum.photos/604/400',
                     preview: false,
                 },
                 {
                     spotId: 3,
-                    url: 'https://picsum.photos/303/201',
+                    url: 'https://picsum.photos/600/404',
                     preview: false,
+                },
+                {
+                    spotId: 3,
+                    url: 'https://picsum.photos/604/404',
+                    preview: false,
+                },
+                {
+                    spotId: 3,
+                    url: 'https://picsum.photos/605/400',
+                    preview: false,
+                },
+                {
+                    spotId: 3,
+                    url: 'https://picsum.photos/600/405',
+                    preview: true,
+                },
+                {
+                    spotId: 4,
+                    url: 'https://picsum.photos/605/405',
+                    preview: false,
+                },
+                {
+                    spotId: 4,
+                    url: 'https://picsum.photos/606/400',
+                    preview: false,
+                },
+                {
+                    spotId: 4,
+                    url: 'https://picsum.photos/600/406',
+                    preview: false,
+                },
+                {
+                    spotId: 4,
+                    url: 'https://picsum.photos/606/406',
+                    preview: false,
+                },
+                {
+                    spotId: 4,
+                    url: 'https://picsum.photos/607/400',
+                    preview: true,
+                },
+                {
+                    spotId: 5,
+                    url: 'https://picsum.photos/600/407',
+                    preview: false,
+                },
+                {
+                    spotId: 5,
+                    url: 'https://picsum.photos/607/407',
+                    preview: false,
+                },
+                {
+                    spotId: 5,
+                    url: 'https://picsum.photos/608/400',
+                    preview: false,
+                },
+                {
+                    spotId: 5,
+                    url: 'https://picsum.photos/600/408',
+                    preview: false,
+                },
+                {
+                    spotId: 5,
+                    url: 'https://picsum.photos/608/408',
+                    preview: true,
+                },
+                {
+                    spotId: 6,
+                    url: 'https://picsum.photos/609/400',
+                    preview: false,
+                },
+                {
+                    spotId: 6,
+                    url: 'https://picsum.photos/600/409',
+                    preview: false,
+                },
+                {
+                    spotId: 6,
+                    url: 'https://picsum.photos/609/409',
+                    preview: false,
+                },
+                {
+                    spotId: 6,
+                    url: 'https://picsum.photos/610/400',
+                    preview: false,
+                },
+                {
+                    spotId: 6,
+                    url: 'https://picsum.photos/600/410',
+                    preview: true,
+                },
+                {
+                    spotId: 7,
+                    url: 'https://picsum.photos/610/410',
+                    preview: false,
+                },
+                {
+                    spotId: 7,
+                    url: 'https://picsum.photos/611/400',
+                    preview: false,
+                },
+                {
+                    spotId: 7,
+                    url: 'https://picsum.photos/600/411',
+                    preview: false,
+                },
+                {
+                    spotId: 7,
+                    url: 'https://picsum.photos/611/411',
+                    preview: false,
+                },
+                {
+                    spotId: 7,
+                    url: 'https://picsum.photos/612/400',
+                    preview: true,
                 },
             ],
             { validate: true },
@@ -69,7 +197,7 @@ module.exports = {
         return queryInterface.bulkDelete(
             options,
             {
-                spotId: { [Op.in]: [1, 2, 3] },
+                spotId: { [Op.in]: [1, 2, 3, 4, 5, 6, 7] },
             },
             {},
         );

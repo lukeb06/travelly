@@ -10,7 +10,7 @@
 
     --primary-light: hsl(355 100 70);
     --primary: hsl(355 100 64);
-    --primary-dark: hsl(355 100 57);
+    --primary-dark: hsl(355 80 57);
     --primary-foreground: rgb(255, 255, 255);
 
     --color-green-light: hsl(175 100 43);
@@ -154,6 +154,9 @@ h6 {
 #root {
     width: 100%;
     height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 main {
@@ -162,4 +165,5 @@ main {
     max-width: 1200px;
     margin: 0 auto;
     padding: calc(var(--unit) * 4);
+    overflow-y: auto;
 }
