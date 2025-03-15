@@ -5,6 +5,7 @@
     padding: calc(var(--unit) * 3);
     background-color: var(--popover);
     height: calc(var(--unit) * 12);
+    border-bottom: 2px solid var(--border);
 }
 
 #navigation > .nav-items {

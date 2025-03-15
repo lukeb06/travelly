@@ -17,12 +17,14 @@
 }
 
 #profileButton > ul {
-    background-color: var(--card);
+    background-color: var(--popover);
     color: var(--card-foreground);
     padding: calc(var(--unit) * 4);
     position: absolute;
     top: 2rem;
     right: 0;
+    border-radius: var(--radius);
+    border: 2px solid var(--border);
 
     z-index: 9;
 }

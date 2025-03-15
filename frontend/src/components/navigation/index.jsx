@@ -46,7 +46,7 @@ function HomeLink() {
                 <span
                     style={{
                         color: 'var(--primary)',
-                        textShadow: '0 0 var(--unit) rgba(0, 0, 0, 0.3)',
+                        textShadow: '0 0 var(--unit) rgba(0, 0, 0, 0.2)',
                     }}
                 >
                     Travelly
