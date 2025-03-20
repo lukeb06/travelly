@@ -66,8 +66,6 @@ export const getSpotById = id => async dispatch => {
     const response = await csrfFetch(`/api/spots/${id}`);
     const spot = await response.json();
 
-    await new Promise(resolve => setTimeout(resolve, 3000));
-
     dispatch(updateSpotDetails(spot));
 
     return spot;
