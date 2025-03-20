@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as spotActions from '../../store/spots';
-import SpotCard from '../../components/spot-card';
+import SpotCard, { SpotCardSkeleton } from '../../components/spot-card';
 import './index.css';
 
 export default function HomePage() {
@@ -20,10 +20,12 @@ export default function HomePage() {
                         return <SpotCard key={spot.id} spot={spot} />;
                     })
                 ) : (
-                    <>No Spots Yet</>
+                    <h1>No Spots Yet</h1>
                 )
             ) : (
-                <>Loading...</>
+                new Array(7).fill(null).map((_, i) => {
+                    return <SpotCardSkeleton key={i} />;
+                })
             )}
         </div>
     );

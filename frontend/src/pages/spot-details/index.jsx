@@ -56,7 +56,7 @@ export default function SpotDetailsPage() {
                     </div>
                 </div>
             ) : (
-                <>Loading...</>
+                <SpotDetailsPageSkeleton />
             )}
         </div>
     );
@@ -134,6 +134,130 @@ function Gallery({ images }) {
                     </div>
                 );
             })}
+        </div>
+    );
+}
+
+function SpotDetailsPageSkeleton() {
+    return (
+        <div className="spot-details">
+            <div className="sd-header">
+                <h1
+                    style={{
+                        color: 'var(--muted)',
+                        backgroundColor: 'var(--muted)',
+                        borderRadius: 'var(--radius)',
+                    }}
+                >
+                    Spot Name
+                </h1>
+                <h3
+                    style={{
+                        color: 'var(--muted)',
+                        backgroundColor: 'var(--muted)',
+                        borderRadius: 'var(--radius)',
+                    }}
+                >
+                    New York City, New York, United States
+                </h3>
+            </div>
+
+            <div
+                style={{
+                    backgroundColor: 'var(--muted)',
+                    borderRadius: 'var(--radius)',
+                    height: '333.33px',
+                    width: '100%',
+                }}
+            ></div>
+
+            <div className="sd-main">
+                <div className="sd-details">
+                    <h2
+                        style={{
+                            color: 'var(--muted)',
+                            backgroundColor: 'var(--muted)',
+                            borderRadius: 'var(--radius)',
+                        }}
+                    >
+                        Hosted by First Last
+                    </h2>
+                    <p
+                        style={{
+                            color: 'var(--muted)',
+                            backgroundColor: 'var(--muted)',
+                            borderRadius: 'var(--radius)',
+                        }}
+                    >
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                        non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+
+                <div className="sd-price">
+                    <div>
+                        <span
+                            className="sd-price-value"
+                            style={{
+                                backgroundColor: 'var(--muted)',
+                                borderRadius: 'var(--radius)',
+                                color: 'var(--muted)',
+                            }}
+                        >
+                            <span
+                                className="sd-price-currency"
+                                style={{
+                                    color: 'var(--muted)',
+                                }}
+                            >
+                                $100.00
+                            </span>
+                            night
+                        </span>
+
+                        <span
+                            className="sd-rating"
+                            style={{
+                                color: 'var(--muted)',
+                                backgroundColor: 'var(--muted)',
+                                borderRadius: 'var(--radius)',
+                            }}
+                        >
+                            <span className="sd-rating-value">
+                                <span
+                                    style={{
+                                        color: 'var(--muted)',
+                                    }}
+                                >
+                                    2.8
+                                </span>
+                            </span>
+                            <span
+                                style={{
+                                    color: 'var(--muted)',
+                                }}
+                            >
+                                {' '}
+                                -{' '}
+                            </span>
+                            <span
+                                className="sd-review-count"
+                                style={{
+                                    color: 'var(--muted)',
+                                }}
+                            >
+                                7 reviews
+                            </span>
+                        </span>
+                    </div>
+
+                    <button onClick={() => alert('Feature coming soon!')}>Reserve</button>
+                </div>
+            </div>
         </div>
     );
 }

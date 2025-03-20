@@ -56,6 +56,7 @@
     width: 100%;
     height: 200px;
     overflow: hidden;
+    background-color: var(--muted);
 }
 
 .spot-card .sc-image img {

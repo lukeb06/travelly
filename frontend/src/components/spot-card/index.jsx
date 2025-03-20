@@ -65,3 +65,53 @@ export default function SpotCard({ spot }) {
         </NavLink>
     );
 }
+
+export function SpotCardSkeleton() {
+    return (
+        <div className="spot-card">
+            <div className="sc-image"></div>
+            <div className="sc-details">
+                <div className="sc-top">
+                    <span className="sc-location">
+                        <span
+                            style={{
+                                color: 'var(--muted)',
+                                backgroundColor: 'var(--muted)',
+                                borderRadius: 'var(--radius)',
+                            }}
+                        >
+                            New York City, New York
+                        </span>
+                    </span>
+
+                    <div className="sc-rating">
+                        {/* TODO: Add star Icon */}
+                        <CiStar />
+                        <span className="sc-rating-value">
+                            <span
+                                style={{
+                                    color: 'var(--muted)',
+                                    backgroundColor: 'var(--muted)',
+                                    borderRadius: 'var(--radius)',
+                                }}
+                            >
+                                2.8
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div className="sc-bottom">
+                    <span
+                        style={{
+                            color: 'var(--muted)',
+                            backgroundColor: 'var(--muted)',
+                            borderRadius: 'var(--radius)',
+                        }}
+                    >
+                        $100.00 / night
+                    </span>
+                </div>
+            </div>
+        </div>
+    );
+}

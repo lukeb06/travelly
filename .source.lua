@@ -12,6 +12,14 @@ run_later(function()
 
 		run_later(function()
 			vimux_run_command("cd frontend && npm run dev")
-		end, 2000)
-	end, 2000)
-end, 2000)
+
+			run_later(function()
+				vim.cmd(":VimuxOpenRunner")
+
+				run_later(function()
+					vimux_run_command("cd frontend && npm run build:watch")
+				end, 1500)
+			end, 1500)
+		end, 1500)
+	end, 1500)
+end, 1500)
