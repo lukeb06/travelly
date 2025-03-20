@@ -147,6 +147,7 @@ function SpotDetailsPageSkeleton() {
                         color: 'var(--muted)',
                         backgroundColor: 'var(--muted)',
                         borderRadius: 'var(--radius)',
+                        width: 'fit-content',
                     }}
                 >
                     Spot Name
@@ -156,6 +157,7 @@ function SpotDetailsPageSkeleton() {
                         color: 'var(--muted)',
                         backgroundColor: 'var(--muted)',
                         borderRadius: 'var(--radius)',
+                        width: 'fit-content',
                     }}
                 >
                     New York City, New York, United States
@@ -178,6 +180,7 @@ function SpotDetailsPageSkeleton() {
                             color: 'var(--muted)',
                             backgroundColor: 'var(--muted)',
                             borderRadius: 'var(--radius)',
+                            width: 'fit-content',
                         }}
                     >
                         Hosted by First Last
@@ -187,6 +190,7 @@ function SpotDetailsPageSkeleton() {
                             color: 'var(--muted)',
                             backgroundColor: 'var(--muted)',
                             borderRadius: 'var(--radius)',
+                            width: 'fit-content',
                         }}
                     >
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
