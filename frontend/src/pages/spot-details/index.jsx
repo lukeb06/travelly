@@ -219,7 +219,7 @@ function SpotDetailsPageSkeleton() {
                                     color: 'var(--muted)',
                                 }}
                             >
-                                $100.00
+                                $100
                             </span>
                             night
                         </span>
@@ -232,14 +232,14 @@ function SpotDetailsPageSkeleton() {
                                 borderRadius: 'var(--radius)',
                             }}
                         >
-                            <span className="sd-rating-value">
-                                <span
-                                    style={{
-                                        color: 'var(--muted)',
-                                    }}
-                                >
-                                    2.8
-                                </span>
+                            <span
+                                className="sd-rating-value"
+                                style={{
+                                    color: 'var(--muted)',
+                                }}
+                            >
+                                <CiStar fill="var(--muted)" />
+                                2.8
                             </span>
                             <span
                                 style={{
@@ -260,7 +260,17 @@ function SpotDetailsPageSkeleton() {
                         </span>
                     </div>
 
-                    <button onClick={() => alert('Feature coming soon!')}>Reserve</button>
+                    <button onClick={() => alert('Feature coming soon!')}>
+                        <span
+                            style={{
+                                color: 'transparent',
+                                backgroundColor: 'rgba(0, 0, 0, 0.1)',
+                                borderRadius: 'var(--radius)',
+                            }}
+                        >
+                            Reserve
+                        </span>
+                    </button>
                 </div>
             </div>
         </div>
