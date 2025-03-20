@@ -148,6 +148,7 @@ function SpotDetailsPageSkeleton() {
                         backgroundColor: 'var(--muted)',
                         borderRadius: 'var(--radius)',
                         width: 'fit-content',
+                        marginBottom: 'var(--unit)',
                     }}
                 >
                     Spot Name
