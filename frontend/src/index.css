@@ -29,6 +29,8 @@
     --muted: hsl(240 4.8% 95.9%);
     --muted-foreground: hsl(240 3.8% 46.1%);
 
+    --error: hsl(0 70% 70%);
+
     --border: hsl(240 5.9% 90%);
     --unit: 0.25rem; /* 4px with a root font-size of 16px */
     --radius: calc(var(--unit) * 2);
@@ -61,6 +63,8 @@
     padding: 0;
     border: 0 solid;
     outline: none;
+    color: var(--foreground);
+    font-size: calc(var(--unit) * 4);
     font-family:
         system-ui,
         -apple-system,
@@ -106,6 +110,19 @@ textarea {
     background-color: transparent;
 }
 
+input,
+textarea {
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: var(--unit) calc(var(--unit) * 3);
+    transition: border-color 0.15s ease-in-out;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--color-green);
+}
+
 button {
     cursor: pointer;
 }
@@ -118,13 +135,6 @@ body {
     height: 100dvh;
     display: grid;
     place-items: center;
-}
-
-*,
-::before,
-::after {
-    color: var(--foreground);
-    font-size: calc(var(--unit) * 4);
 }
 
 h1 {

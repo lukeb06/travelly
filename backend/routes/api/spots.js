@@ -26,10 +26,10 @@ const validateCreateSpot = [
         .exists({ checkFalsy: true })
         .isFloat({ min: -90, max: 90 })
         .withMessage('Latitude must be within -90 and 90'),
-    check('lng')
+    check('long')
         .exists({ checkFalsy: true })
         .isFloat({ min: -180, max: 180 })
-        .withMessage('Latitude must be within -180 and 180'),
+        .withMessage('Longitude must be within -180 and 180'),
     check('name')
         .exists({ checkFalsy: true })
         .notEmpty()
@@ -168,9 +168,9 @@ router.get('/:spotId', async (req, res) => {
 
 // Create a spot
 router.post('/', validateCreateSpot, async (req, res) => {
-    const { address, city, state, country, lat, lng, name, description, price } = req.body;
+    const { address, city, state, country, lat, long, name, description, price } = req.body;
 
-    const ownerId = req.user?.id || 1;
+    const ownerId = req.user.id;
 
     const newSpot = await Spot.create({
         address,
@@ -178,7 +178,7 @@ router.post('/', validateCreateSpot, async (req, res) => {
         state,
         country,
         lat,
-        lng,
+        lng: long,
         name,
         description,
         price,
@@ -441,7 +441,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
 //ADD AN IMAGE TO A SPOT BASED ON THE SPOT'S ID
 router.post('/:spotId/images', requireAuth, async (req, res, next) => {
     const { spotId } = req.params;
-    const { url } = req.body;
+    const { url, preview } = req.body;
     const userId = req.user.id;
 
     const spot = await Spot.findByPk(spotId);
@@ -456,7 +456,7 @@ router.post('/:spotId/images', requireAuth, async (req, res, next) => {
     const image = await SpotImage.create({
         spotId,
         url,
-        preview: false,
+        preview: preview || false,
     });
     return res.status(201).json({
         id: image.id,

@@ -4,9 +4,20 @@ const UPDATE = 'spots/update';
 const DETAILS = 'spots/details';
 
 const defaultState = {
-    allSpots: [],
-    byId: null,
+    allSpots: null,
+    byId: {},
+    selectedSpot: null,
 };
+
+function getSpotsById(spots) {
+    const byId = {};
+
+    spots.forEach(spot => {
+        byId[spot.id] = spot;
+    });
+
+    return byId;
+}
 
 export default function spotsReducer(state = defaultState, action) {
     switch (action.type) {
@@ -14,11 +25,12 @@ export default function spotsReducer(state = defaultState, action) {
             return {
                 ...state,
                 allSpots: action.spots,
+                byId: getSpotsById(action.spots),
             };
         case DETAILS:
             return {
                 ...state,
-                byId: action.spot,
+                selectedSpot: action.spot,
             };
         default:
             return state;

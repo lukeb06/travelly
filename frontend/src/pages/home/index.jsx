@@ -14,12 +14,16 @@ export default function HomePage() {
 
     return (
         <div id="homePage">
-            {spots && spots.length ? (
-                spots.map(spot => {
-                    return <SpotCard key={spot.id} spot={spot} />;
-                })
+            {spots !== null ? (
+                spots.length > 0 ? (
+                    spots.map(spot => {
+                        return <SpotCard key={spot.id} spot={spot} />;
+                    })
+                ) : (
+                    <>No Spots Yet</>
+                )
             ) : (
-                <></>
+                <>Loading...</>
             )}
         </div>
     );

@@ -1,0 +1,85 @@
+#createSpotPage {
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--unit) * 8);
+
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+
+        .errors {
+            color: var(--error);
+            font-size: calc(var(--unit) * 3);
+        }
+
+        .form-group {
+            width: 100%;
+
+            border-bottom: 2px dashed var(--border);
+            padding-bottom: calc(var(--unit) * 6);
+
+            h3 {
+                margin-top: calc(var(--unit) * 2);
+                margin-bottom: calc(var(--unit) * 5);
+            }
+
+            .section {
+                margin-bottom: calc(var(--unit) * 3);
+                display: flex;
+                flex-direction: column;
+                gap: calc(var(--unit) * 1);
+            }
+
+            .double-section {
+                width: 100%;
+                flex-direction: row;
+
+                .section {
+                    margin-bottom: 0;
+                    flex: 1;
+                }
+            }
+
+            .pricing-section {
+                flex-direction: row;
+                align-items: center;
+
+                label {
+                    flex-shrink: 1;
+                }
+
+                input {
+                    flex-grow: 1;
+                }
+            }
+        }
+
+        button {
+            width: fit-content;
+            margin: 0 auto;
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            padding: calc(var(--unit) * 2) calc(var(--unit) * 6);
+            border-radius: var(--radius);
+            cursor: pointer;
+
+            transition: background-color 0.15s ease-in-out;
+        }
+
+        button:disabled {
+            background-color: var(--muted);
+            color: var(--muted-foreground);
+            cursor: not-allowed;
+        }
+
+        button:disabled:hover {
+            background-color: var(--muted);
+            color: var(--muted-foreground);
+        }
+
+        button:hover {
+            background-color: var(--primary-dark);
+        }
+    }
+}

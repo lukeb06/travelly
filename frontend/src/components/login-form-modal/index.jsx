@@ -9,6 +9,8 @@ export default function LoginFormModal() {
     const sessionUser = useSelector(state => state.session.user);
     const [errors, setErrors] = useState([]);
 
+    const btnRef = useRef(null);
+
     const handleSubmit = e => {
         e.preventDefault();
 
@@ -28,6 +30,16 @@ export default function LoginFormModal() {
         );
     };
 
+    const [emailUsernameS, setEmailUsernameS] = useState('');
+    const [passwordS, setPasswordS] = useState('');
+
+    useEffect(() => {
+        if (!btnRef.current) return;
+        btnRef.current.disabled = false;
+        if (emailUsernameS.length < 4) btnRef.current.disabled = true;
+        if (passwordS.length < 6) btnRef.current.disabled = true;
+    }, [emailUsernameS, passwordS]);
+
     if (sessionUser) return <Navigate to="/" replace={true} />;
 
     return (
@@ -36,18 +48,28 @@ export default function LoginFormModal() {
             <form onSubmit={handleSubmit}>
                 <div className="section">
                     <label htmlFor="emailUsername">Email or Username</label>
-                    <input type="text" name="emailUsername" />
+                    <input
+                        onInput={e => setEmailUsernameS(e.target.value)}
+                        type="text"
+                        name="emailUsername"
+                    />
                 </div>
 
                 <div className="section">
                     <label htmlFor="password">Password</label>
-                    <input type="password" name="password" />
+                    <input
+                        onInput={e => setPasswordS(e.target.value)}
+                        type="password"
+                        name="password"
+                    />
                 </div>
 
                 <p className="errors">{errors.length > 0 ? errors[0] : <br />}</p>
 
                 <div>
-                    <button type="submit">Login</button>
+                    <button ref={btnRef} disabled type="submit">
+                        Login
+                    </button>
                 </div>
             </form>
             <div></div>

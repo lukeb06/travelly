@@ -8,7 +8,7 @@ import { CiStar } from 'react-icons/ci';
 
 export default function SpotDetailsPage() {
     const dispatch = useDispatch();
-    const spot = useSelector(state => state.spots.byId);
+    const spot = useSelector(state => state.spots.selectedSpot);
 
     const { id } = useParams();
 
@@ -56,7 +56,7 @@ export default function SpotDetailsPage() {
                     </div>
                 </div>
             ) : (
-                <></>
+                <>Loading...</>
             )}
         </div>
     );
@@ -75,9 +75,17 @@ function Reviews({ spotId }) {
 
     return (
         <div className="sd-reviews">
-            {reviews.map(review => {
-                return <Review key={review.id} review={review} />;
-            })}
+            {reviews !== null ? (
+                reviews.length > 0 ? (
+                    reviews.map(review => {
+                        return <Review key={review.id} review={review} />;
+                    })
+                ) : (
+                    <>No Reviews Yet</>
+                )
+            ) : (
+                <>Loading...</>
+            )}
         </div>
     );
 }
@@ -114,11 +122,12 @@ function Gallery({ images }) {
     const previewImage = images.find(image => image.preview);
     const otherImages = images.filter(images => !images.preview);
 
-    const allImages = [previewImage, ...otherImages];
-
     return (
         <div className="sd-gallery">
-            {allImages.map(image => {
+            <div className="sd-gallery-preview">
+                <img src={previewImage.url} />
+            </div>
+            {otherImages.map(image => {
                 return (
                     <div key={image.id} className="sd-gallery-image">
                         <img src={image.url} />
@@ -127,21 +136,4 @@ function Gallery({ images }) {
             })}
         </div>
     );
-
-    // return (
-    //     <div className="sd-gallery">
-    //         <div className="sd-gallery-preview">
-    //             <img src={previewImage.url} />
-    //         </div>
-    //         <div className="sd-gallery-others">
-    //             {otherImages.map(image => {
-    //                 return (
-    //                     <div key={image.id} className="sd-gallery-image">
-    //                         <img src={image.url} />
-    //                     </div>
-    //                 );
-    //             })}
-    //         </div>
-    //     </div>
-    // );
 }
