@@ -33,3 +33,36 @@
     white-space: nowrap;
     padding: var(--unit);
 }
+
+#createSpotButton {
+    margin-top: 2px;
+    position: relative;
+
+    a {
+        display: block;
+        color: var(--color-green-dark);
+    }
+}
+
+#createSpotButton::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    background-color: var(--color-green);
+    inset: 51%;
+    top: unset;
+    bottom: -2px;
+    border-radius: var(--radius);
+    opacity: 0.1;
+
+    transition:
+        inset 0.3s ease-out,
+        opacity 0.3s ease-out;
+}
+
+#createSpotButton:hover::after {
+    inset: 0%;
+    opacity: 1;
+    top: unset;
+    bottom: -2px;
+}

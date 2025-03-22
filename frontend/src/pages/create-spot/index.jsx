@@ -3,6 +3,7 @@ import { useRef, useState } from 'react';
 import './index.css';
 import { useDispatch } from 'react-redux';
 import { csrfFetch } from '../../store/csrf';
+import { useNavigate } from 'react-router-dom';
 
 const DEFAULT_ERROR_STATE = {
     country: null,
@@ -24,6 +25,7 @@ const DEFAULT_ERROR_STATE = {
 
 export default function CreateSpotPage() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [errors, setErrors] = useState(DEFAULT_ERROR_STATE);
 
@@ -141,7 +143,8 @@ export default function CreateSpotPage() {
                 ]);
 
                 submitBtnRef.current.disabled = false;
-                window.location.href = `/spots/${newSpot.id}`;
+
+                navigate(`/spots/${newSpot.id}`);
             } catch (res) {
                 submitBtnRef.current.disabled = false;
                 const { errors: rErrors } = await res.json();

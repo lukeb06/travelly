@@ -40,7 +40,7 @@ export default function SignupFormModal() {
     if (sessionUser) return <Navigate to="/" replace={true} />;
 
     return (
-        <div id="page">
+        <div id="signupPage">
             <h1>Signup</h1>
             <form onSubmit={handleSubmit}>
                 <div className="section">

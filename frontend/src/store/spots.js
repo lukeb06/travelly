@@ -10,6 +10,7 @@ const defaultState = {
 };
 
 function getSpotsById(spots) {
+    if (!spots) return {};
     const byId = {};
 
     spots.forEach(spot => {
@@ -52,6 +53,8 @@ function updateSpotDetails(spot) {
 }
 
 export const getSpots = () => async dispatch => {
+    dispatch(updateSpots(null));
+
     const response = await csrfFetch('/api/spots');
     const spots = await response.json();
 

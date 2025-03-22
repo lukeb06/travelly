@@ -1,6 +1,7 @@
 import { csrfFetch } from './csrf';
 
 const UPDATE = 'reviews/update';
+const ADD = 'reviews/add';
 
 const defaultState = {
     reviews: [],
@@ -12,6 +13,11 @@ export default function reviewsReducer(state = defaultState, action) {
             return {
                 ...state,
                 reviews: action.reviews,
+            };
+        case ADD:
+            return {
+                ...state,
+                reviews: [...state.reviews, action.review],
             };
         default:
             return state;

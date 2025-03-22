@@ -13,7 +13,7 @@
     --primary-dark: hsl(355 80 57);
     --primary-foreground: rgb(255, 255, 255);
 
-    --color-green-light: hsl(175 100 43);
+    --color-green-light: hsl(175 80 43);
     --color-green: hsl(175 100 33);
     --color-green-dark: hsl(175 100 23);
     --color-green-foreground: rgb(255, 255, 255);
@@ -180,5 +180,5 @@ main > .container {
     /* height: 100%; */
     max-width: 1200px;
     margin: 0 auto;
-    padding: calc(var(--unit) * 4);
+    padding: calc(var(--unit) * 6) calc(var(--unit) * 4);
 }

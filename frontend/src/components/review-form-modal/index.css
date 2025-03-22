@@ -1,0 +1,58 @@
+#reviewFormModal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--unit) * 4);
+    padding: 0 calc(var(--unit) * 4);
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: calc(var(--unit) * 6);
+
+        textarea {
+            width: 60dvw;
+            height: 100px;
+            max-width: 375px;
+        }
+
+        .stars-input {
+            display: flex;
+            flex-direction: row;
+            gap: var(--unit);
+            align-items: center;
+
+            label {
+                cursor: pointer;
+            }
+        }
+
+        button {
+            background-color: var(--color-green);
+            color: var(--color-green-foreground);
+            padding: calc(var(--unit) * 2) calc(var(--unit) * 6);
+            border-radius: var(--radius);
+            cursor: pointer;
+
+            transition: background-color 0.15s ease-in-out;
+        }
+
+        button:disabled {
+            background-color: var(--muted);
+            color: var(--muted-foreground);
+            cursor: not-allowed;
+        }
+
+        button:disabled:hover {
+            background-color: var(--muted);
+            color: var(--muted-foreground);
+        }
+
+        button:hover {
+            background-color: var(--color-green-dark);
+        }
+    }
+}
