@@ -43,7 +43,7 @@ export default function LoginFormModal() {
     if (sessionUser) return <Navigate to="/" replace={true} />;
 
     return (
-        <div id="page">
+        <div id="loginPage">
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
                 <div className="section">

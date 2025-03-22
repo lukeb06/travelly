@@ -291,7 +291,7 @@ const validateCreateReview = [
 
 router.post('/:spotId/reviews', requireAuth, validateCreateReview, async (req, res) => {
     const spotId = parseInt(req.params.spotId);
-    const { review, stars, createdAt, updatedAt } = req.body;
+    const { review, stars } = req.body;
     const userId = req.user.id;
 
     // check if Spot does not exist
@@ -321,8 +321,6 @@ router.post('/:spotId/reviews', requireAuth, validateCreateReview, async (req, r
         spotId,
         review,
         stars,
-        createdAt,
-        updatedAt,
     });
 
     const formattedCreatedAt = new Date(newReview.createdAt)

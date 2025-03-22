@@ -4,17 +4,26 @@ import * as spotActions from '../../store/spots';
 import * as reviewActions from '../../store/reviews';
 import './index.css';
 import { useParams } from 'react-router-dom';
-import { CiStar } from 'react-icons/ci';
+import { FaRegStar } from 'react-icons/fa';
+import OpenModalButton from '../../components/open-modal-button';
+import ReviewFormModal from '../../components/review-form-modal';
 
 export default function SpotDetailsPage() {
+    const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
     const spot = useSelector(state => state.spots.selectedSpot);
+    const reviews = useSelector(state => state.reviews.reviews);
 
     const { id } = useParams();
 
     useEffect(() => {
         dispatch(spotActions.getSpotById(id));
+        dispatch(reviewActions.getReviewsBySpotId(id));
     }, [dispatch, id]);
+
+    const userIsSpotOwner = user && spot && user.id === spot.Owner.id;
+    // TODO: Implement this
+    const hasPostedReview = false;
 
     return (
         <div id="spotDetailsPage">
@@ -52,7 +61,18 @@ export default function SpotDetailsPage() {
 
                     <div className="sd-footer">
                         <RatingText spot={spot} />
-                        <Reviews spotId={id} />
+
+                        {user ? (
+                            <OpenModalButton
+                                buttonText="Post Your Review"
+                                modalComponent={<ReviewFormModal />}
+                                className="modal-button"
+                                disabled={hasPostedReview || userIsSpotOwner}
+                            />
+                        ) : (
+                            <></>
+                        )}
+                        <Reviews reviews={reviews} />
                     </div>
                 </div>
             ) : (
@@ -62,16 +82,8 @@ export default function SpotDetailsPage() {
     );
 }
 
-// TODO: Post Your Review button
-
-function Reviews({ spotId }) {
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(reviewActions.getReviewsBySpotId(spotId));
-    }, [dispatch, spotId]);
-
-    const reviews = useSelector(state => state.reviews.reviews);
+function Reviews({ reviews }) {
+    const user = useSelector(state => state.session.user);
 
     return (
         <div className="sd-reviews">
@@ -81,10 +93,10 @@ function Reviews({ spotId }) {
                         return <Review key={review.id} review={review} />;
                     })
                 ) : (
-                    <>No Reviews Yet</>
+                    <>{user ? 'Be the first to post a review!' : 'No reviews yet'}</>
                 )
             ) : (
-                <>Loading...</>
+                <></>
             )}
         </div>
     );
@@ -108,12 +120,25 @@ function Review({ review }) {
 function RatingText({ spot }) {
     return (
         <span className="sd-rating">
-            <span className="sd-rating-value">
-                <CiStar />
-                {parseFloat(spot.avgStarRating).toFixed(1)}
-            </span>
-            <span> - </span>
-            <span className="sd-review-count">{spot.numReviews} reviews</span>
+            {spot.numReviews > 0 ? (
+                <>
+                    <span className="sd-rating-value">
+                        <FaRegStar />
+                        {parseFloat(spot.avgStarRating).toFixed(1)}
+                    </span>
+                    <span> - </span>
+                    <span className="sd-review-count">
+                        {spot.numReviews} {spot.numReviews > 1 ? 'reviews' : 'review'}
+                    </span>
+                </>
+            ) : (
+                <>
+                    <span className="sd-rating-value">
+                        <FaRegStar />
+                        New
+                    </span>
+                </>
+            )}
         </span>
     );
 }
@@ -238,7 +263,7 @@ function SpotDetailsPageSkeleton() {
                                     color: 'var(--muted)',
                                 }}
                             >
-                                <CiStar fill="var(--muted)" />
+                                <FaRegStar fill="var(--muted)" />
                                 2.8
                             </span>
                             <span

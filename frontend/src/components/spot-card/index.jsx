@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import './index.css';
-import { CiStar } from 'react-icons/ci';
+import { FaRegStar } from 'react-icons/fa';
 
 function clamp(num, min, max) {
     return Math.max(min, Math.min(max, num));
@@ -48,10 +48,9 @@ export default function SpotCard({ spot }) {
                     </span>
 
                     <div className="sc-rating">
-                        {/* TODO: Add star Icon */}
-                        <CiStar />
+                        <FaRegStar />
                         <span className="sc-rating-value">
-                            {parseFloat(spot.avgRating).toFixed(1)}
+                            {spot.avgRating ? parseFloat(spot.avgRating).toFixed(1) : 'New'}
                         </span>
                     </div>
                 </div>
@@ -85,8 +84,7 @@ export function SpotCardSkeleton() {
                     </span>
 
                     <div className="sc-rating">
-                        {/* TODO: Add star Icon */}
-                        <CiStar />
+                        <FaRegStar />
                         <span className="sc-rating-value">
                             <span
                                 style={{
