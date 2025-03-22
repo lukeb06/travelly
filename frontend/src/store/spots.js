@@ -2,11 +2,13 @@ import { csrfFetch } from './csrf';
 
 const UPDATE = 'spots/update';
 const DETAILS = 'spots/details';
+const UPDATE_CURRENT = 'spots/updateCurrent';
 
 const defaultState = {
     allSpots: null,
     byId: {},
     selectedSpot: null,
+    mySpots: null,
 };
 
 function getSpotsById(spots) {
@@ -33,6 +35,11 @@ export default function spotsReducer(state = defaultState, action) {
                 ...state,
                 selectedSpot: action.spot,
             };
+        case UPDATE_CURRENT:
+            return {
+                ...state,
+                mySpots: action.spots,
+            };
         default:
             return state;
     }
@@ -49,6 +56,13 @@ function updateSpotDetails(spot) {
     return {
         type: DETAILS,
         spot,
+    };
+}
+
+function updateMySpots(spots) {
+    return {
+        type: UPDATE_CURRENT,
+        spots,
     };
 }
 
@@ -72,4 +86,15 @@ export const getSpotById = id => async dispatch => {
     dispatch(updateSpotDetails(spot));
 
     return spot;
+};
+
+export const getMySpots = () => async dispatch => {
+    dispatch(updateMySpots(null));
+
+    const response = await csrfFetch('/api/spots/current');
+    const spots = await response.json();
+
+    dispatch(updateMySpots(spots));
+
+    return spots;
 };

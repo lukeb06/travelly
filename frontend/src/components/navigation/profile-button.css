@@ -29,6 +29,10 @@
     z-index: 9;
 }
 
+#profileButton > ul > li {
+    white-space: nowrap;
+}
+
 #profileButton .modal-button {
     white-space: nowrap;
     padding: var(--unit);

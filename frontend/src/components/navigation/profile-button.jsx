@@ -56,14 +56,25 @@ function ProfileButton({ user }) {
                 <ul className={`profile-dropdown ${showMenu ? '' : 'hidden'}`} ref={ulRef}>
                     {user ? (
                         <>
-                            <li>{user.username}</li>
-                            <li>
-                                {user.firstName} {user.lastName}
-                            </li>
+                            <li>Hello, {user.username}!</li>
                             <li>{user.email}</li>
+                            <div
+                                style={{
+                                    borderBottom: '1px solid rgba(0, 0, 0, 0.2)',
+                                    borderRadius: 'var(--radius)',
+                                    margin: 'calc(var(--unit) * 2) 0',
+                                }}
+                            />
                             <li>
                                 <NavLink to="/spots/current">Manage Spots</NavLink>
                             </li>
+                            <div
+                                style={{
+                                    borderBottom: '1px solid rgba(0, 0, 0, 0.2)',
+                                    borderRadius: 'var(--radius)',
+                                    margin: 'calc(var(--unit) * 2) 0',
+                                }}
+                            />
                             <li>
                                 <button onClick={logout}>Log Out</button>
                             </li>
