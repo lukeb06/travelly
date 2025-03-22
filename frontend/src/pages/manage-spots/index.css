@@ -1,0 +1,30 @@
+#manageSpotsPage {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--unit) * 4);
+
+    .spot-card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: calc(var(--unit) * 8);
+
+        .spot-card {
+            margin: 0 0;
+        }
+    }
+}
+
+#manageSpotsPage > a {
+    width: fit-content;
+    background-color: var(--color-green);
+    color: var(--color-green-foreground);
+    padding: calc(var(--unit) * 2) calc(var(--unit) * 6);
+    border-radius: var(--radius);
+    cursor: pointer;
+
+    transition: background-color 0.15s ease-in-out;
+}
+
+#manageSpotsPage > a:hover {
+    background-color: var(--color-green-dark);
+}

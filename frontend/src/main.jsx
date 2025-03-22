@@ -12,6 +12,7 @@ import { Modal, ModalProvider } from './context/modal';
 import HomePage from './pages/home';
 import SpotDetailsPage from './pages/spot-details';
 import CreateSpotPage from './pages/create-spot';
+import ManageSpotsPage from './pages/manage-spots';
 
 const store = configureStore();
 
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
             {
                 path: '/spots/new',
                 element: <CreateSpotPage />,
+            },
+            {
+                path: '/spots/current',
+                element: <ManageSpotsPage />,
             },
             {
                 path: '*',

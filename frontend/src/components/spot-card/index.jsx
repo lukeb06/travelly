@@ -6,7 +6,8 @@ function clamp(num, min, max) {
     return Math.max(min, Math.min(max, num));
 }
 
-export default function SpotCard({ spot }) {
+export default function SpotCard({ spot, managed }) {
+    managed = managed || false;
     const handleMouseMove = e => {
         const mouseX = e.clientX;
         const mouseY = e.clientY;
@@ -57,6 +58,14 @@ export default function SpotCard({ spot }) {
                 <div className="sc-bottom">
                     <span>${parseFloat(spot.price).toFixed(2)} / night</span>
                 </div>
+                {managed ? (
+                    <div className="sc-managed-buttons">
+                        <button className="sc-update-button">Update Spot</button>
+                        <button className="sc-delete-button">Delete Spot</button>
+                    </div>
+                ) : (
+                    <></>
+                )}
             </div>
             <div className="sc-tooltip">
                 <span>{spot.name}</span>
