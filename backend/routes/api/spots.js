@@ -49,39 +49,29 @@ const validateCreateSpot = [
 
 router.get('/current', requireAuth, async (req, res) => {
     const spots = await Spot.findAll({
-        attributes: [
-            'id',
-            'ownerId',
-            'address',
-            'city',
-            'state',
-            'country',
-            'lat',
-            'lng',
-            'name',
-            'description',
-            'price',
-            'createdAt',
-            'updatedAt',
-            [sequelize.fn('MAX', sequelize.col('url')), 'previewImage'],
-            [sequelize.fn('AVG', sequelize.col('stars')), 'avgRating'],
-        ],
+        attributes: {
+            include: [
+                [sequelize.fn('MAX', sequelize.col('url')), 'previewImage'],
+                [sequelize.fn('AVG', sequelize.col('stars')), 'avgRating'],
+            ],
+        },
         where: {
             ownerId: req.user.id,
         },
         include: [
             {
                 model: SpotImage,
-                attributes: ['url'],
+                attributes: [],
                 where: {
                     preview: true,
                 },
             },
             {
                 model: Review,
-                attributes: ['stars'],
+                attributes: [],
             },
         ],
+        group: ['Spot.id'],
     });
 
     const spotsResponse = spots.map(spot => {
