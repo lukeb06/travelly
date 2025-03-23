@@ -10,14 +10,7 @@
     cursor: pointer;
 
     position: relative;
-    box-shadow: 0 0 calc(var(--unit) * 2) rgba(0, 0, 0, 0.1);
-
-    transition: box-shadow 0.5s ease-out;
-}
-
-.spot-card:hover {
-    transition: box-shadow 0.75s ease-out;
-    box-shadow: 0 0 calc(var(--unit) * 4) rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 calc(var(--unit) * 2) var(--border);
 }
 
 .spot-card .sc-tooltip {
@@ -111,7 +104,8 @@
     justify-content: space-between;
     margin-top: calc(var(--unit) * 2);
 
-    button {
+    .sc-update-button,
+    .sc-delete-button {
         /* white-space: nowrap; */
         font-size: calc(var(--unit) * 3);
         background-color: var(--color-green);
@@ -123,18 +117,7 @@
         transition: background-color 0.15s ease-in-out;
     }
 
-    button:disabled {
-        background-color: var(--muted);
-        color: var(--muted-foreground);
-        cursor: not-allowed;
-    }
-
-    button:disabled:hover {
-        background-color: var(--muted);
-        color: var(--muted-foreground);
-    }
-
-    button:hover {
+    .sc-update-button:hover {
         background-color: var(--color-green-dark);
     }
 

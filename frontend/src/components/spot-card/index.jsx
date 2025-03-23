@@ -60,7 +60,9 @@ export default function SpotCard({ spot, managed }) {
                 </div>
                 {managed ? (
                     <div className="sc-managed-buttons">
-                        <button className="sc-update-button">Update Spot</button>
+                        <NavLink to={`/spots/${spot.id}/edit`} className="sc-update-button">
+                            Update Spot
+                        </NavLink>
                         <button className="sc-delete-button">Delete Spot</button>
                     </div>
                 ) : (
