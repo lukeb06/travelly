@@ -10,14 +10,7 @@
     cursor: pointer;
 
     position: relative;
-    box-shadow: 0 0 calc(var(--unit) * 2) rgba(0, 0, 0, 0.1);
-
-    transition: box-shadow 0.5s ease-out;
-}
-
-.spot-card:hover {
-    transition: box-shadow 0.75s ease-out;
-    box-shadow: 0 0 calc(var(--unit) * 4) rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 calc(var(--unit) * 2) var(--border);
 }
 
 .spot-card .sc-tooltip {
@@ -101,4 +94,70 @@
     flex-direction: row;
     align-items: center;
     gap: calc(var(--unit) * 1);
+}
+
+.spot-card .sc-details .sc-managed-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: calc(var(--unit) * 2);
+
+    .sc-update-button,
+    .sc-delete-button {
+        /* white-space: nowrap; */
+        font-size: calc(var(--unit) * 3);
+        background-color: var(--color-green);
+        color: var(--color-green-foreground);
+        padding: calc(var(--unit) * 2) calc(var(--unit) * 3);
+        border-radius: var(--radius);
+        cursor: pointer;
+
+        transition: background-color 0.15s ease-in-out;
+    }
+
+    .sc-update-button:hover {
+        background-color: var(--color-green-dark);
+    }
+
+    .sc-delete-button {
+        background-color: var(--primary);
+        color: var(--primary-foreground);
+    }
+
+    .sc-delete-button:hover {
+        background-color: var(--primary-dark);
+    }
+}
+
+.sc-delete-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--unit) * 4);
+
+    button {
+        background-color: var(--color-green);
+        color: var(--color-green-foreground);
+        padding: calc(var(--unit) * 2) calc(var(--unit) * 3);
+        border-radius: var(--radius);
+        cursor: pointer;
+
+        transition: background-color 0.15s ease-in-out;
+    }
+
+    button:hover {
+        background-color: var(--color-green-dark);
+    }
+
+    button:nth-of-type(2) {
+        background-color: var(--primary);
+        color: var(--primary-foreground);
+    }
+
+    button:nth-of-type(2):hover {
+        background-color: var(--primary-dark);
+    }
 }
