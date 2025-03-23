@@ -1,6 +1,10 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import './index.css';
 import { FaRegStar } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { deleteSpot } from '../../store/spots';
+import OpenModalButton from '../open-modal-button';
+import { useModal } from '../../context/modal';
 
 function clamp(num, min, max) {
     return Math.max(min, Math.min(max, num));
@@ -8,6 +12,12 @@ function clamp(num, min, max) {
 
 export default function SpotCard({ spot, managed }) {
     managed = managed || false;
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const { setModalContent } = useModal();
+
     const handleMouseMove = e => {
         const mouseX = e.clientX;
         const mouseY = e.clientY;
@@ -37,6 +47,22 @@ export default function SpotCard({ spot, managed }) {
         tooltip.style.left = `${newX}px`;
     };
 
+    const closeModal = e => {
+        if (e) e.preventDefault();
+        setModalContent(null);
+    };
+
+    const updateSpot = e => {
+        e.preventDefault();
+        navigate(`/spots/${spot.id}/edit`);
+    };
+
+    const delSpot = e => {
+        e.preventDefault();
+        dispatch(deleteSpot(spot.id));
+        closeModal();
+    };
+
     return (
         <NavLink to={`/spots/${spot.id}`} onMouseMove={handleMouseMove} className="spot-card">
             <div className="sc-image">
@@ -60,10 +86,23 @@ export default function SpotCard({ spot, managed }) {
                 </div>
                 {managed ? (
                     <div className="sc-managed-buttons">
-                        <NavLink to={`/spots/${spot.id}/edit`} className="sc-update-button">
+                        <button onClick={updateSpot} className="sc-update-button">
                             Update Spot
-                        </NavLink>
-                        <button className="sc-delete-button">Delete Spot</button>
+                        </button>
+                        <OpenModalButton
+                            buttonText="Delete"
+                            modalComponent={
+                                <div className="sc-delete-modal">
+                                    <h1>Confirm Delete</h1>
+                                    <p>
+                                        Are you sure you want to remove this spot from the listings?
+                                    </p>
+                                    <button onClick={delSpot}>Yes (Delete Spot)</button>
+                                    <button onClick={closeModal}>No (Keep Spot)</button>
+                                </div>
+                            }
+                            className="sc-delete-button"
+                        />
                     </div>
                 ) : (
                     <></>

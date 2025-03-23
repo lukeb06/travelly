@@ -130,3 +130,34 @@
         background-color: var(--primary-dark);
     }
 }
+
+.sc-delete-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--unit) * 4);
+
+    button {
+        background-color: var(--color-green);
+        color: var(--color-green-foreground);
+        padding: calc(var(--unit) * 2) calc(var(--unit) * 3);
+        border-radius: var(--radius);
+        cursor: pointer;
+
+        transition: background-color 0.15s ease-in-out;
+    }
+
+    button:hover {
+        background-color: var(--color-green-dark);
+    }
+
+    button:nth-of-type(2) {
+        background-color: var(--primary);
+        color: var(--primary-foreground);
+    }
+
+    button:nth-of-type(2):hover {
+        background-color: var(--primary-dark);
+    }
+}

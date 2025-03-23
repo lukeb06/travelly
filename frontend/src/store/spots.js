@@ -42,7 +42,9 @@ export default function spotsReducer(state = defaultState, action) {
                 mySpots: action.spots,
             };
         case REMOVE: {
-            const newSpots = state.allSpots.filter(spot => spot.id !== action.id);
+            const newSpots = state.allSpots
+                ? state.allSpots.filter(spot => spot.id !== action.id)
+                : null;
             return {
                 ...state,
                 allSpots: newSpots,
@@ -112,7 +114,9 @@ export const getMySpots = () => async dispatch => {
     const response = await csrfFetch('/api/spots/current');
     const spots = await response.json();
 
-    dispatch(updateMySpots(spots));
+    const validSpots = spots.filter(spot => spot.id !== null);
+
+    dispatch(updateMySpots(validSpots));
 
     return spots;
 };
