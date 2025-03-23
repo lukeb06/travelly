@@ -13,9 +13,13 @@
         justify-content: center;
         gap: calc(var(--unit) * 6);
 
+        .errors {
+            color: var(--error);
+        }
+
         textarea {
             width: 60dvw;
-            height: 100px;
+            min-height: 100px;
             max-width: 375px;
         }
 
