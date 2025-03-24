@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import { FaRegStar } from 'react-icons/fa';
 import OpenModalButton from '../../components/open-modal-button';
 import ReviewFormModal from '../../components/review-form-modal';
+import { useModal } from '../../context/modal';
 
 export default function SpotDetailsPage() {
     const user = useSelector(state => state.session.user);
@@ -22,12 +23,11 @@ export default function SpotDetailsPage() {
     }, [dispatch, id]);
 
     const userIsSpotOwner = user && spot && user.id === spot.Owner.id;
-    // TODO: Implement this
-    const hasPostedReview = false;
+    const hasPostedReview = user && reviews && reviews.some(review => review.User.id === user.id);
 
     return (
         <div id="spotDetailsPage">
-            {spot !== null ? (
+            {spot !== null && reviews !== null ? (
                 <div className="spot-details">
                     <div className="sd-header">
                         <h1>{spot.name}</h1>
@@ -103,16 +103,55 @@ function Reviews({ reviews }) {
 }
 
 function Review({ review }) {
+    const dispatch = useDispatch();
+
     const date = new Date(review.createdAt);
     const month = date.toLocaleString('default', { month: 'long' });
     const year = date.getFullYear();
     const formattedDate = `${month} ${year}`;
+
+    const user = useSelector(state => state.session.user);
+
+    const isUserReview = user && review.User.id === user.id;
+
+    const { setModalContent } = useModal();
+
+    const closeModal = e => {
+        if (e && e.preventDefault) e.preventDefault();
+        setModalContent(null);
+    };
 
     return (
         <div className="sd-review">
             <h3>{review.User.firstName}</h3>
             <h4>{formattedDate}</h4>
             <p>{review.review}</p>
+            {isUserReview ? (
+                <OpenModalButton
+                    buttonText="Delete"
+                    modalComponent={
+                        <div className="sd-delete-modal">
+                            <h1>Confirm Delete</h1>
+                            <p>Are you sure you want to remove this review?</p>
+                            <button
+                                onClick={() => {
+                                    dispatch(reviewActions.deleteReview(review.id)).then(() => {
+                                        dispatch(spotActions.getSpotById(review.spotId)).then(
+                                            closeModal,
+                                        );
+                                    });
+                                }}
+                            >
+                                Yes (Delete Review)
+                            </button>
+                            <button onClick={closeModal}>No (Keep Review)</button>
+                        </div>
+                    }
+                    className="sd-delete-button"
+                />
+            ) : (
+                <></>
+            )}
         </div>
     );
 }
