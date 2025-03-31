@@ -1,15 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import './index.css';
+import { useModal } from '../../context/modal';
 
 export default function LoginFormModal() {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user);
     const [errors, setErrors] = useState([]);
 
     const btnRef = useRef(null);
+
+    const { closeModal } = useModal();
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -22,12 +23,12 @@ export default function LoginFormModal() {
         if (!emailUsername) return setErrors(['Email or Username must not be blank']);
         if (!password) return setErrors(['Password must not be blank']);
 
-        return dispatch(sessionActions.login({ credential: emailUsername, password })).catch(
-            async res => {
+        return dispatch(sessionActions.login({ credential: emailUsername, password }))
+            .then(closeModal)
+            .catch(async res => {
                 const { message } = await res.json();
                 setErrors([message]);
-            },
-        );
+            });
     };
 
     const [emailUsernameS, setEmailUsernameS] = useState('');
@@ -40,7 +41,14 @@ export default function LoginFormModal() {
         if (passwordS.length < 6) btnRef.current.disabled = true;
     }, [emailUsernameS, passwordS]);
 
-    if (sessionUser) return <Navigate to="/" replace={true} />;
+    const demoLogin = () => {
+        return dispatch(sessionActions.login({ credential: 'demo@user.io', password: 'password' }))
+            .then(closeModal)
+            .catch(async res => {
+                const { message } = await res.json();
+                setErrors([message]);
+            });
+    };
 
     return (
         <div id="loginPage">
@@ -72,7 +80,9 @@ export default function LoginFormModal() {
                     </button>
                 </div>
             </form>
-            <div></div>
+            <div>
+                <button onClick={demoLogin}>Demo Login</button>
+            </div>
         </div>
     );
 }
