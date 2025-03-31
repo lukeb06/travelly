@@ -1,13 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import './index.css';
+import { useModal } from '../../context/modal';
 
 export default function SignupFormModal() {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user);
     const [errors, setErrors] = useState([]);
+
+    const { closeModal } = useModal();
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -29,15 +30,13 @@ export default function SignupFormModal() {
         if (!lastName) return setErrors(['Last name must not be blank']);
         if (!password) return setErrors(['Password must not be blank']);
 
-        return dispatch(
-            sessionActions.signup({ email, username, firstName, lastName, password }),
-        ).catch(async res => {
-            const { message } = await res.json();
-            setErrors([message]);
-        });
+        return dispatch(sessionActions.signup({ email, username, firstName, lastName, password }))
+            .then(closeModal)
+            .catch(async res => {
+                const { message } = await res.json();
+                setErrors([message]);
+            });
     };
-
-    if (sessionUser) return <Navigate to="/" replace={true} />;
 
     return (
         <div id="signupPage">
